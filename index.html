@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дворовые Бани</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #d17c45;
+      --primary-dark: #b6632e;
+      --secondary: #ffd8a8;
+      --light: #fff7ec;
+      --dark: #2e1c10;
+      --accent: #a84300;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Rubik', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.5;
+      font-size: 16px; /* Увеличил базовый размер шрифта */
+    }
+    
+    header {
+      text-align: center;
+      padding: 30px 15px;
+      background: linear-gradient(135deg, var(--secondary), #ffc489);
+      border-bottom: 4px solid var(--primary);
+    }
+    
+    header img {
+      width: 140px; /* Немного увеличил логотип */
+      margin-bottom: 12px;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
+    
+    h1 {
+      font-size: 2rem; /* Увеличил заголовок */
+      margin: 0 0 8px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    header p {
+      font-size: 1.1rem; /* Увеличил подзаголовок */
+      margin: 0;
+      color: var(--dark);
+    }
+    
+    .section {
+      padding: 30px 15px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .section h2 {
+      font-size: 1.6rem; /* Увеличил подзаголовки секций */
+      margin-bottom: 18px;
+      color: var(--accent);
+    }
+    
+    ul {
+      padding-left: 20px;
+    }
+    
+    ul li {
+      margin-bottom: 12px;
+      font-size: 1.05rem; /* Увеличил текст в списке */
+    }
+    
+    .btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 13px 26px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem; /* Увеличил кнопку */
+    }
+    
+    footer {
+      background-color: #f3e2cd;
+      padding: 18px;
+      text-align: center;
+      font-size: 0.95rem; /* Увеличил футер */
+      border-top: 2px dashed var(--primary);
+    }
+    
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    .notice {
+      background-color: #fff3e0;
+      padding: 18px;
+      border-radius: 6px;
+      margin: 25px auto;
+      text-align: center;
+      font-size: 1.05rem; /* Увеличил уведомление */
+    }
+    
+    .map-container {
+      margin-top: 18px;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 350px;
+      border: 1px solid #e0b286;
+      position: relative;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .testimonial {
+      background: white;
+      padding: 18px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 1rem; /* Увеличил отзывы */
+    }
+    
+    @media (max-width: 600px) {
+      .map-container {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="photo_2025-08-01_23-05-01.jpg" alt="Логотип Дворовые Бани">
+  <h1>Дворовые Бани</h1>
+  <p>Горячий пар с дворовым характером</p>
+</header>
+
+<section class="section">
+  <h2>О нас</h2>
+  <p>Мы — два друга, которые решили вернуть людям настоящую радость дворовых бань. Всё просто: на горке, из картона, с вениками, паром и эфирными маслами. Это не SPA, это душевный пар под открытым небом. Вечером — паримся, днём — строим!</p>
+</section>
+
+<section class="section">
+  <h2>Как проходит парилка?</h2>
+  <ul>
+    <li>1. Собираемся на горке (адрес сообщим заранее)</li>
+    <li>2. Залезаем в нашу дворовую баню</li>
+    <li>3. Получаем пар, веники, запахи и эмоции</li>
+    <li>4. Чай, смех, разговоры — по-домашнему</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Отзывы</h2>
+  <div class="testimonial">
+    <p>“Больше кайфа, чем в сауне за 5000!”</p>
+    <p><strong>— Антон, 26</strong></p>
+  </div>
+  <div class="testimonial">
+    <p>“После вашей бани мне даже к психологу не надо :)”</p>
+    <p><strong>— Марина</strong></p>
+  </div>
+  <div class="testimonial">
+    <p>“Сначала не верил, но это реально топ.”</p>
+    <p><strong>— Илья, 19</strong></p>
+  </div>
+</section>
+
+<section class="notice">
+  <p>🚸 В баню допускаются <u>только дети от 10 до 14 лет</u>. Всё по-доброму, но с заботой о безопасности!</p>
+</section>
+
+<section class="section">
+  <h2>Где мы находимся?</h2>
+  <p>Место проведения банных процедур — на уютной дворовой горке:</p>
+  <div class="map-container">
+    <!-- Исправленный вариант карты через API -->
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A735b261fdc614fe42969adcbd10bb04e00496eb71e5d0d279e0ea5a2cbdf3faf&amp;source=constructor" width="1125" height="514" frameborder="0"></iframe>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Контакты</h2>
+  <p><strong>Телефон:</strong> <a href="tel:+79272309201">+7 927 230 92 01</a> (звонить в рабочее время)</p>
+  <p><strong>Telegram канал:</strong> <a href="https://t.me/+JjAaxNPQi0A3NDAy" target="_blank">t.me/+JjAaxNPQi0A3NDAy</a></p>
+  <p><strong>Telegram для записи:</strong> <a href="https://t.me/your_username" target="_blank">@your_username</a></p>
+  <a class="btn" href="https://t.me/your_username" target="_blank">Записаться в баню</a>
+</section>
+
+<footer>
+  © 2025 Дворовые Бани. Сделано с веником и любовью.
+</footer>
+
+</body>
+</html>
