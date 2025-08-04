@@ -21,7 +21,7 @@
       background: var(--light);
       color: var(--dark);
       line-height: 1.5;
-      font-size: 16px; /* Увеличил базовый размер шрифта */
+      font-size: 16px;
     }
     
     header {
@@ -32,21 +32,21 @@
     }
     
     header img {
-      width: 140px; /* Немного увеличил логотип */
+      width: 140px;
       margin-bottom: 12px;
       border-radius: 50%;
       border: 3px solid white;
     }
     
     h1 {
-      font-size: 2rem; /* Увеличил заголовок */
+      font-size: 2rem;
       margin: 0 0 8px;
       font-weight: 600;
       color: var(--accent);
     }
     
     header p {
-      font-size: 1.1rem; /* Увеличил подзаголовок */
+      font-size: 1.1rem;
       margin: 0;
       color: var(--dark);
     }
@@ -58,7 +58,7 @@
     }
     
     .section h2 {
-      font-size: 1.6rem; /* Увеличил подзаголовки секций */
+      font-size: 1.6rem;
       margin-bottom: 18px;
       color: var(--accent);
     }
@@ -69,7 +69,7 @@
     
     ul li {
       margin-bottom: 12px;
-      font-size: 1.05rem; /* Увеличил текст в списке */
+      font-size: 1.05rem;
     }
     
     .btn {
@@ -81,14 +81,14 @@
       border-radius: 6px;
       text-decoration: none;
       font-weight: 500;
-      font-size: 1.05rem; /* Увеличил кнопку */
+      font-size: 1.05rem;
     }
     
     footer {
       background-color: #f3e2cd;
       padding: 18px;
       text-align: center;
-      font-size: 0.95rem; /* Увеличил футер */
+      font-size: 0.95rem;
       border-top: 2px dashed var(--primary);
     }
     
@@ -107,7 +107,7 @@
       border-radius: 6px;
       margin: 25px auto;
       text-align: center;
-      font-size: 1.05rem; /* Увеличил уведомление */
+      font-size: 1.05rem;
     }
     
     .map-container {
@@ -130,12 +130,44 @@
       padding: 18px;
       border-radius: 6px;
       margin-bottom: 15px;
-      font-size: 1rem; /* Увеличил отзывы */
+      font-size: 1rem;
     }
-    
+
+    /* Стили для скрытой кнопки */
+    .secret-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(209, 124, 69, 0.1);
+      border: 1px dashed var(--primary);
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0.3;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 12px;
+      text-decoration: none;
+      z-index: 1000;
+    }
+
+    .secret-btn:hover {
+      opacity: 1;
+      background-color: rgba(209, 124, 69, 0.3);
+      transform: scale(1.1);
+    }
+
     @media (max-width: 600px) {
-      .map-container {
-        height: 300px;
+      .secret-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 10px;
+        bottom: 15px;
+        right: 15px;
       }
     }
   </style>
@@ -187,7 +219,6 @@
   <h2>Где мы находимся?</h2>
   <p>Место проведения банных процедур — на уютной дворовой горке:</p>
   <div class="map-container">
-    <!-- Исправленный вариант карты через API -->
     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A735b261fdc614fe42969adcbd10bb04e00496eb71e5d0d279e0ea5a2cbdf3faf&amp;source=constructor" width="1125" height="514" frameborder="0"></iframe>
   </div>
 </section>
@@ -203,6 +234,9 @@
 <footer>
   © 2025 Дворовые Бани. Сделано с веником и любовью.
 </footer>
+
+<!-- Скрытая кнопка для перехода на страницу с бонусными картами -->
+<a href="bonus_card_site_firestore/second.html" class="secret-btn" title="Секретная страница">?</a>
 
 </body>
 </html>
