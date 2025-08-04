@@ -29,6 +29,7 @@
       padding: 30px 15px;
       background: linear-gradient(135deg, var(--secondary), #ffc489);
       border-bottom: 4px solid var(--primary);
+      position: relative;
     }
     
     header img {
@@ -133,48 +134,138 @@
       font-size: 1rem;
     }
 
-    /* Стили для скрытой кнопки */
-    .secret-btn {
-      position: fixed;
-      bottom: 20px;
+    /* Стили для кнопки личного кабинета */
+    .account-btn {
+      position: absolute;
+      top: 20px;
       right: 20px;
-      width: 40px;
-      height: 40px;
-      background-color: rgba(209, 124, 69, 0.1);
-      border: 1px dashed var(--primary);
-      border-radius: 50%;
-      cursor: pointer;
-      opacity: 0.3;
-      transition: all 0.3s ease;
+      padding: 8px 16px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 20px;
+      font-weight: 500;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-size: 12px;
-      text-decoration: none;
-      z-index: 1000;
+      gap: 8px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    .secret-btn:hover {
-      opacity: 1;
-      background-color: rgba(209, 124, 69, 0.3);
-      transform: scale(1.1);
+    .account-btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .account-btn i {
+      font-size: 1.1em;
+    }
+
+    /* Стили для модального окна */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    
+    .modal-content {
+      background-color: var(--light);
+      margin: 10% auto;
+      padding: 25px;
+      border-radius: 8px;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--dark);
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    .login-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+    
+    .login-btn:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .account-info {
+      margin-top: 20px;
+    }
+
+    .account-info p {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    .account-info strong {
+      color: var(--accent);
     }
 
     @media (max-width: 600px) {
-      .secret-btn {
-        width: 30px;
-        height: 30px;
-        font-size: 10px;
-        bottom: 15px;
+      .account-btn {
+        top: 15px;
         right: 15px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+
+      .modal-content {
+        margin: 20% auto;
+        width: 90%;
       }
     }
   </style>
+  <!-- Иконка пользователя -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
 <header>
+  <button class="account-btn" id="accountBtn">
+    <i class="fas fa-user"></i>
+    <span>Личный кабинет</span>
+  </button>
   <img src="images/photo_2025-08-01_23-05-01.jpg" alt="Логотип Дворовые Бани">
   <h1>Дворовые Бани</h1>
   <p>Горячий пар с дворовым характером</p>
@@ -235,8 +326,135 @@
   © 2025 Дворовые Бани. Сделано с веником и любовью.
 </footer>
 
-<!-- Скрытая кнопка для перехода на страницу с бонусными картами -->
-<a href="bonus_card_site_firestore/second.html" class="secret-btn" title="Секретная страница">?</a>
+<!-- Модальное окно входа -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Вход в личный кабинет</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="loginEmail">Email:</label>
+        <input type="email" id="loginEmail" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Пароль:</label>
+        <input type="password" id="loginPassword" required>
+      </div>
+      <button type="submit" class="login-btn">Войти</button>
+    </form>
+    <p style="text-align: center; margin-top: 15px;">
+      Нет аккаунта? <a href="register.html">Зарегистрироваться</a>
+    </p>
+  </div>
+</div>
 
+<!-- Модальное окно личного кабинета -->
+<div id="accountModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Личный кабинет</h2>
+    <div id="accountInfo" class="account-info">
+      <!-- Сюда будет загружаться информация о пользователе -->
+    </div>
+  </div>
+</div>
+
+<script>
+  // Получаем элементы DOM
+  const accountBtn = document.getElementById('accountBtn');
+  const loginModal = document.getElementById('loginModal');
+  const accountModal = document.getElementById('accountModal');
+  const closeButtons = document.querySelectorAll('.close');
+  const loginForm = document.getElementById('loginForm');
+  const accountInfo = document.getElementById('accountInfo');
+
+  // Проверяем, авторизован ли пользователь
+  function checkAuth() {
+    return localStorage.getItem('currentUser');
+  }
+
+  // Открываем модальное окно при клике на кнопку
+  accountBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    const currentUser = checkAuth();
+    if (currentUser) {
+      showAccountInfo(JSON.parse(currentUser));
+      accountModal.style.display = 'block';
+    } else {
+      loginModal.style.display = 'block';
+    }
+  });
+
+  // Закрываем модальное окно при клике на крестик
+  closeButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      loginModal.style.display = 'none';
+      accountModal.style.display = 'none';
+    });
+  });
+
+  // Закрываем модальное окно при клике вне его
+  window.addEventListener('click', function(e) {
+    if (e.target === loginModal) loginModal.style.display = 'none';
+    if (e.target === accountModal) accountModal.style.display = 'none';
+  });
+
+  // Обработка формы входа
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    // Проверка данных
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(u => u.email === email && u.password === password);
+    
+    if (user) {
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      loginModal.style.display = 'none';
+      showAccountInfo(user);
+      accountModal.style.display = 'block';
+    } else {
+      alert('Неверный email или пароль');
+    }
+  });
+
+  // Функция для отображения информации о пользователе
+  function showAccountInfo(user) {
+    accountInfo.innerHTML = `
+      <p><strong>Имя:</strong> ${user.name || 'Не указано'}</p>
+      <p><strong>Email:</strong> ${user.email}</p>
+      <p><strong>Посещений:</strong> ${user.visits || 0}</p>
+      <p><strong>Абонемент:</strong> ${user.subscription ? `Действителен до ${user.subscription}` : 'Нет'}</p>
+      <p><strong>Бонусная карта:</strong> ${user.bonusCard ? `Скидка ${user.bonusCard.discount}% (${user.bonusCard.points || 0} баллов)` : 'Нет'}</p>
+      <hr>
+      <button onclick="logout()" class="login-btn">Выйти</button>
+    `;
+  }
+
+  // Функция выхода
+  window.logout = function() {
+    localStorage.removeItem('currentUser');
+    accountModal.style.display = 'none';
+    alert('Вы успешно вышли из системы');
+  }
+
+  // Инициализация тестового пользователя (для демонстрации)
+  if (!localStorage.getItem('users')) {
+    const testUser = {
+      name: "Иван Иванов",
+      email: "test@example.com",
+      password: "123456",
+      visits: 5,
+      subscription: "31.12.2025",
+      bonusCard: {
+        discount: 10,
+        points: 150
+      }
+    };
+    localStorage.setItem('users', JSON.stringify([testUser]));
+  }
+</script>
 </body>
 </html>
